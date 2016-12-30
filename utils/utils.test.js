@@ -2,6 +2,7 @@ const expect = require('expect');
 
 const utils = require('./utils');
 
+
 it('should add two numbers', () => {
   const res = utils.add(33, 11);
   
@@ -15,6 +16,15 @@ it('should add two numbers', () => {
   expect(res).toBe(44).toBeA('number');
 });
 
+
+it('should add two numbers in async function', (done) => {
+  utils.asyncAdd(3, 4, (sum) => {
+    expect(sum).toBe(7).toBeA('number');
+    done();
+  });
+});
+
+
 it('should square a number', () => {
   const res = utils.square(8);
   
@@ -26,6 +36,14 @@ it('should square a number', () => {
   
   expect(res).toBe(64).toBeA('number');
 });
+
+it('should square a number in async function', (done) => {
+  utils.asyncSquare(4, (square) => {
+    expect(square).toBe(16).toBeA('number');
+    done();
+  });
+});
+
 
 it('should expect some value', () => {
   expect(12).toNotBe(13);
